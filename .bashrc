@@ -7,3 +7,11 @@ loop () {
         eval ${@:2}
     done
 }
+
+cdd () {
+    cd $1 && ls
+}
+
+cddv () {
+    cd $1 && ls -alh
+}
