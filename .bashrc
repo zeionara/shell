@@ -1,5 +1,9 @@
 #!/bin/bash
 
+src () {
+    . $HOME/$1/.bashrc
+}
+
 alias rsrc='. ~/.bashrc'
 
 loop () {
