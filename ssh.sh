@@ -1,15 +1,19 @@
 #!/bin/bash
 
+__ssh_algorithm=ed25519
+__ssh_file_path=$HOME/.ssh/id_$__ssh_algorithm
+
 sshgen () {
     comment=${1:-zeionara@gmail.com}
-    path=$HOME/.ssh/id_ed25519
 
-    ssh-keygen -t ed25519 -C $comment -f $path
+    ssh-keygen -t $__ssh_algorithm -C $comment -f $__ssh_file_path
 
     echo -e '\nPublic key:\n'
 
-    cat $path.pub
+    cat $__ssh_file_path.pub
 }
+
+alias ssha="cat $__ssh_file_path.pub"
 
 # if [ "$1" == 'no-passphrase' ]; then
 #     comment=zeionara@gmail.com

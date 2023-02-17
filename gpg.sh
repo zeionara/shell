@@ -1,10 +1,10 @@
 #!/bin/bash
 
-name='Zeio Nara'
-email='zeionara@gmail.com'
+__gpg_user_name='Zeio Nara'
+__gpg_user_email='zeionara@gmail.com'
 
 gpga () {
-    key=$(gpg2 --list-secret-keys --keyid-format LONG $email | grep sec | sed 's/.*rsa4096\///' | sed 's/ .*//' | tail -n 1)
+    key=$(gpg2 --list-secret-keys --keyid-format LONG $__gpg_user_email | grep sec | sed 's/.*rsa4096\///' | sed 's/ .*//' | tail -n 1)
 
     echo -e "\nKey id: $key\n"
 
@@ -24,9 +24,9 @@ gpgen () {
     gpg2 --version || sudo apt-get install gnupg2
 
     if [[ -z $1 ]]; then
-        gpg2 --quick-generate-key "$name <$email>" rsa4096 sign never
+        gpg2 --quick-generate-key "$__gpg_user_name <$__gpg_user_email>" rsa4096 sign never
     else
-        gpg2 --quick-generate-key "$name ($1) <$email>" rsa4096 sign never
+        gpg2 --quick-generate-key "$__gpg_user_name ($1) <$__gpg_user_email>" rsa4096 sign never
     fi
 
     gpga
@@ -46,12 +46,12 @@ gpgeng () {
     git config --global user.signingkey $__GPG_KEY
     git config --global commit.gpgsign true
 
-    git config --global user.name "$name"
-    git config --global user.email "$email"
+    git config --global user.name "$__gpg_user_name"
+    git config --global user.email "$__gpg_user_email"
 
     git config --global gpg.program gpg2
 }
 
-alias gpgl="gpg2 --list-secret-keys --keyid-format LONG $email"
+alias gpgl="gpg2 --list-secret-keys --keyid-format LONG $__gpg_user_email"
 
 alias gpgenf="gpg2 --full-generate-key"
