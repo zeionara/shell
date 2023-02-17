@@ -17,9 +17,9 @@ gpgen () {
     gpg2 --version || sudo apt-get install gnupg2
 
     if [[ -z $1 ]]; then
-        gpg2 --quick-generate-key "$name <$email>" rsa4096 sign,encrypt never
+        gpg2 --quick-generate-key "$name <$email>" rsa4096 sign never
     else
-        gpg2 --quick-generate-key "$name ($1) <$email>" rsa4096 sign,encrypt never
+        gpg2 --quick-generate-key "$name ($1) <$email>" rsa4096 sign never
     fi
 
     gpga
@@ -36,7 +36,7 @@ gpgen () {
 gpgeng () {
     gpgen $1
 
-    git config --global user.singingkey $__GPG_KEY
+    git config --global user.signingkey $__GPG_KEY
     git config --global commit.gpgsign true
 
     git config --global user.name "$name"
