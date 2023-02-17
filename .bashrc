@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export GPG_TTY=$(tty)
+
 src () {
     . $HOME/$1/.bashrc
 }
