@@ -14,8 +14,11 @@ gpga () {
 }
 
 gpgen () {
+    # Uncomment the following two lines to disable "floating" window for typing passphrase in terminal
+
     # pinentry-tty --version || sudo apt-get update && sudo apt-get install pinentry-tty
     # sudo update-alternatives --set pinentry /usr/bin/pinentry-tty
+
     # export -e '\nexport GPG_TTY=$(tty)' >> ~/.bashrc
 
     gpg2 --version || sudo apt-get install gnupg2
