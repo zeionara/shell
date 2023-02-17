@@ -22,5 +22,9 @@ cddv () {
     cd $1 && ls -alh
 }
 
+back () {
+    mv $1 $1.backup
+}
+
 . $HOME/bash-tools/ssh.sh
 . $HOME/bash-tools/gpg.sh
