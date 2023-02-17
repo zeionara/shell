@@ -15,3 +15,5 @@ cdd () {
 cddv () {
     cd $1 && ls -alh
 }
+
+. make-ssh-key.sh
