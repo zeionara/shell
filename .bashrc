@@ -20,4 +20,5 @@ cddv () {
     cd $1 && ls -alh
 }
 
-. make-ssh-key.sh
+. $HOME/bash-tools/ssh.sh
+. $HOME/bash-tools/gpg.sh

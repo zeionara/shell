@@ -1,6 +1,6 @@
 #!/bin/bash
 
-make_ssh_key () {
+sshgen () {
     comment=${1:-zeionara@gmail.com}
     path=$HOME/.ssh/id_ed25519
 
