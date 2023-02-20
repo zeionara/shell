@@ -2,6 +2,10 @@
 
 export GPG_TTY=$(tty)
 
+raise () {
+    : "${__raise:?$1}"
+}
+
 src () {
     . $HOME/$1/.bashrc
 }
@@ -22,9 +26,10 @@ cddv () {
     cd $1 && ls -alh
 }
 
-back () {
-    mv $1 $1.backup
-}
+# back () {
+#     mv $1 $1.backup
+# }
 
 . $HOME/bash-tools/ssh.sh
 . $HOME/bash-tools/gpg.sh
+. $HOME/bash-tools/backup.sh
