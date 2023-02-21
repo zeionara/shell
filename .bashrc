@@ -26,8 +26,12 @@ cddv () {
     cd $1 && ls -alh
 }
 
+settup () {
+    curl -Ls https://cutt.ly/setup-$1
+}
+
 setup () {
-    curl -Ls https://cutt.ly/setup-$1 | bash
+    settup $1 | bash
 }
 
 . $HOME/bash-tools/ssh.sh
