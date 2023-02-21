@@ -26,9 +26,9 @@ cddv () {
     cd $1 && ls -alh
 }
 
-# back () {
-#     mv $1 $1.backup
-# }
+setup () {
+    curl -Ls https://cutt.ly/setup-$1 | bash
+}
 
 . $HOME/bash-tools/ssh.sh
 . $HOME/bash-tools/gpg.sh
