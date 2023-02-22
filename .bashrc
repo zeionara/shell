@@ -10,7 +10,19 @@ src () {
     . $HOME/$1/.bashrc
 }
 
-alias rsrc='. ~/.bashrc'
+rsrc () {
+    __conda_prefix=$CONDA_PREFIX
+
+    . ~/.bashrc
+
+    if [ ! -z $__conda_prefix ]; then
+        env_name=`basename $__conda_prefix`
+        if [ "$env_name" != "anaconda3" ]; then
+            conda activate "$env_name"
+        fi
+    fi
+}
+# alias rsrc='. ~/.bashrc'
 
 loop () {
     for i in $(seq $1); do
