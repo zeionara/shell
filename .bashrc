@@ -37,3 +37,5 @@ setup () {
 . $HOME/bash-tools/ssh.sh
 . $HOME/bash-tools/gpg.sh
 . $HOME/bash-tools/backup.sh
+
+. $HOME/bash-tools/conda.sh
