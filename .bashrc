@@ -46,6 +46,18 @@ setup () {
     settup $1 | bash
 }
 
+ctls () {
+    cat $1 | less
+}
+
+ctgp () {
+    cat $1 | grep $2
+}
+
+ctgpi () {
+    cat $1 | grep $2 -v
+}
+
 . $HOME/bash-tools/ssh.sh
 . $HOME/bash-tools/gpg.sh
 . $HOME/bash-tools/backup.sh
