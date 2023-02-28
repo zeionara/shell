@@ -63,3 +63,4 @@ ctgpi () {
 . $HOME/bash-tools/backup.sh
 
 . $HOME/bash-tools/conda.sh
+. $HOME/bash-tools/python.sh
