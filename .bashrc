@@ -64,3 +64,5 @@ ctgpi () {
 
 . $HOME/bash-tools/conda.sh
 . $HOME/bash-tools/python.sh
+
+. $HOME/bash-tools/nvidia.sh
