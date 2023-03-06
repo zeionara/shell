@@ -58,6 +58,18 @@ ctgpi () {
     cat $1 | grep $2 -v
 }
 
+scg () {  # SpaCe Global
+    df -h / | sort -rh
+}
+
+sc () {  # SpaCe
+    sudo du -h ${1:-.} -d 1 | sort -rh
+}
+
+scls () {  # SpaCe
+    sudo du -h ${1:-.} -d 1 | sort -rh | less
+}
+
 . $HOME/bash-tools/ssh.sh
 . $HOME/bash-tools/gpg.sh
 . $HOME/bash-tools/backup.sh
