@@ -3,6 +3,20 @@
 __ssh_algorithm=ed25519
 __ssh_file_path=$HOME/.ssh/id_$__ssh_algorithm
 
+alias ssha="cat $__ssh_file_path.pub"
+
+sshf () {
+    user=$1
+    host=$2
+
+    src_port=$3
+    dst_port=$4
+
+    port=${5:-22}
+
+    ssh -L $dst_port:localhost:$src_port $user@$host -p $port
+}
+
 sshgen () {
     comment=${1:-zeionara@gmail.com}
 
@@ -12,8 +26,6 @@ sshgen () {
 
     cat $__ssh_file_path.pub
 }
-
-alias ssha="cat $__ssh_file_path.pub"
 
 # if [ "$1" == 'no-passphrase' ]; then
 #     comment=zeionara@gmail.com
