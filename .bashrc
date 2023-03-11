@@ -70,6 +70,15 @@ scls () {  # SpaCe
     sudo du -h ${1:-.} -d 1 | sort -rh | less
 }
 
+trc () {
+    tar -cJvf $2.tar.xz -C $1 ./
+}
+
+trx () {
+    mkdir $1
+    tar -xJvf $2.tar.xz -C $1
+}
+
 . $HOME/bash-tools/ssh.sh
 . $HOME/bash-tools/gpg.sh
 . $HOME/bash-tools/backup.sh
