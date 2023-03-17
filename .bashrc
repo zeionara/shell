@@ -58,6 +58,22 @@ ctgpi () {
     cat $1 | grep $2 -v
 }
 
+lsgp () {
+    if [ -z $2 ]; then
+        ls | grep $1
+    else
+        ls $1 | grep $2
+    fi
+}
+
+lsagp () {
+    if [ -z $2 ]; then
+        ls -alh | grep $1
+    else
+        ls -alh $1 | grep $2
+    fi
+}
+
 scg () {  # SpaCe Global
     df -h / | sort -rh
 }
