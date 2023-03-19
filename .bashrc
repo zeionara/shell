@@ -95,6 +95,18 @@ trx () {
     tar -xJvf $2.tar.xz -C $1
 }
 
+apx () {
+    if [ -z $2 ]; then
+        for file in *.*; do
+            mv $file $1-$file
+        done
+    else
+        for file in $1/*.*; do
+            mv $file $1/$2-$(basename $file)
+        done
+    fi
+}
+
 . $HOME/bash-tools/ssh.sh
 . $HOME/bash-tools/gpg.sh
 . $HOME/bash-tools/backup.sh
