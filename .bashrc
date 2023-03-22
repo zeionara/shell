@@ -1,6 +1,8 @@
 #!/bin/bash
 
-export GPG_TTY=$(tty)
+export GPG_TTY=$(tty)  # TODO: remove duplicate from bashrc project
+
+BASH_TOOLS_ROOT=$HOME/bash-tools
 
 raise () {
     : "${__raise:?$1}"
@@ -107,11 +109,12 @@ apx () {
     fi
 }
 
-. $HOME/bash-tools/ssh.sh
-. $HOME/bash-tools/gpg.sh
-. $HOME/bash-tools/backup.sh
+. $BASH_TOOLS_ROOT/ssh.sh
+. $BASH_TOOLS_ROOT/gpg.sh
+. $BASH_TOOLS_ROOT/backup.sh
 
-. $HOME/bash-tools/conda.sh
-. $HOME/bash-tools/python.sh
+. $BASH_TOOLS_ROOT/conda.sh
+. $BASH_TOOLS_ROOT/python.sh
 
-. $HOME/bash-tools/nvidia.sh
+. $BASH_TOOLS_ROOT/nvidia.sh
+. $BASH_TOOLS_ROOT/ffmpeg.sh
