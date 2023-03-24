@@ -58,6 +58,12 @@ alias caip='python -m pip install'
 
 alias cal='conda info --envs'
 
+# patch
+
+caph () {
+    export PATH=$CONDA_PREFIX/bin:$PATH
+}
+
 # rename
 
 car () {
