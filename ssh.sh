@@ -27,6 +27,10 @@ sshgen () {
     cat $__ssh_file_path.pub
 }
 
+sd5 () { # send to duet 5
+    echo scp -P 2217 $1 zeio@d5:~/Downloads/$2
+}
+
 # if [ "$1" == 'no-passphrase' ]; then
 #     comment=zeionara@gmail.com
 #     passphrase=

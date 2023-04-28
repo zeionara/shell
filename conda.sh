@@ -20,9 +20,9 @@ cacf () {
     path=${1:-environment.yml}
 
     if [ -z $2 ]; then
-        conda create -f $path
+        conda env create -f $path
     else
-        conda create -n $2 -f $path
+        conda env create -n $2 -f $path
     fi
 }
 
