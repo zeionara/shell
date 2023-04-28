@@ -1,6 +1,8 @@
 #!/bin/bash
 
-export GPG_TTY=$(tty)
+export GPG_TTY=$(tty)  # TODO: remove duplicate from bashrc project
+
+BASH_TOOLS_ROOT=$HOME/bash-tools
 
 raise () {
     : "${__raise:?$1}"
@@ -17,7 +19,7 @@ rsrc () {
 
     if [ ! -z $__conda_prefix ]; then
         env_name=`basename $__conda_prefix`
-        if [ "$env_name" != "anaconda3" ]; then
+        if [ "$env_name" != "anaconda3" ] && [ "$env_name" != "conda" ]; then
             conda activate "$env_name"
         fi
     fi
@@ -58,6 +60,22 @@ ctgpi () {
     cat $1 | grep $2 -v
 }
 
+lsgp () {
+    if [ -z $2 ]; then
+        ls | grep $1
+    else
+        ls $1 | grep $2
+    fi
+}
+
+lsagp () {
+    if [ -z $2 ]; then
+        ls -alh | grep $1
+    else
+        ls -alh $1 | grep $2
+    fi
+}
+
 scg () {  # SpaCe Global
     df -h / | sort -rh
 }
@@ -70,11 +88,33 @@ scls () {  # SpaCe
     sudo du -h ${1:-.} -d 1 | sort -rh | less
 }
 
-. $HOME/bash-tools/ssh.sh
-. $HOME/bash-tools/gpg.sh
-. $HOME/bash-tools/backup.sh
+trc () {
+    tar -cJvf $2.tar.xz -C $1 ./
+}
 
-. $HOME/bash-tools/conda.sh
-. $HOME/bash-tools/python.sh
+trx () {
+    mkdir $1
+    tar -xJvf $2.tar.xz -C $1
+}
 
-. $HOME/bash-tools/nvidia.sh
+apx () {
+    if [ -z $2 ]; then
+        for file in *.*; do
+            mv $file $1-$file
+        done
+    else
+        for file in $1/*.*; do
+            mv $file $1/$2-$(basename $file)
+        done
+    fi
+}
+
+. $BASH_TOOLS_ROOT/ssh.sh
+. $BASH_TOOLS_ROOT/gpg.sh
+. $BASH_TOOLS_ROOT/backup.sh
+
+. $BASH_TOOLS_ROOT/conda.sh
+. $BASH_TOOLS_ROOT/python.sh
+
+. $BASH_TOOLS_ROOT/nvidia.sh
+. $BASH_TOOLS_ROOT/ffmpeg.sh

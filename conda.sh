@@ -39,6 +39,15 @@ cae () {
     conda env export | grep -v "^prefix: " > $path
 }
 
+# fetch (update)
+
+caff () {
+    path=${1:-environment.yml}
+
+    conda activate $(head $path -n 1 | awk '{print $2}')
+    conda env update --file $path --prune
+}
+
 
 # install
 
@@ -48,6 +57,12 @@ alias caip='python -m pip install'
 # list
 
 alias cal='conda info --envs'
+
+# patch
+
+caph () {
+    export PATH=$CONDA_PREFIX/bin:$PATH
+}
 
 # rename
 
