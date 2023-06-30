@@ -124,3 +124,4 @@ n-lines () {
 . $BASH_TOOLS_ROOT/ffmpeg.sh
 
 . $BASH_TOOLS_ROOT/nuxt.sh
+. $BASH_TOOLS_ROOT/apt.sh
