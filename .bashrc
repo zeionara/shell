@@ -125,3 +125,5 @@ n-lines () {
 
 . $BASH_TOOLS_ROOT/nuxt.sh
 . $BASH_TOOLS_ROOT/apt.sh
+
+. $BASH_TOOLS_ROOT/mongo.sh
