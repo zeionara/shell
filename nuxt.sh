@@ -1,5 +1,5 @@
 #!/bin/bash
 
 gpnx () {
-    grep -rn $1 composables components
+    grep -rn $1 composables components pages
 }
