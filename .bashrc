@@ -113,6 +113,10 @@ n-lines () {
     echo $(find "$@" -name '*.*' -type f | xargs wc -l | tail -n 1 | sed -E 's/\s+/ /g' | cut -d ' ' -f 2) lines
 }
 
+cpc () {
+    cp $1 $(dirname $1)/$2
+}
+
 . $BASH_TOOLS_ROOT/ssh.sh
 . $BASH_TOOLS_ROOT/gpg.sh
 . $BASH_TOOLS_ROOT/backup.sh
