@@ -131,3 +131,4 @@ cpc () {
 . $BASH_TOOLS_ROOT/apt.sh
 
 . $BASH_TOOLS_ROOT/mongo.sh
+. $BASH_TOOLS_ROOT/error.sh
