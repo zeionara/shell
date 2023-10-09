@@ -132,3 +132,5 @@ cpc () {
 
 . $BASH_TOOLS_ROOT/mongo.sh
 . $BASH_TOOLS_ROOT/error.sh
+
+. $BASH_TOOLS_ROOT/search.sh
