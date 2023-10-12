@@ -5,6 +5,10 @@ alias pp='pip'
 
 alias pnt='python -m unittest'
 
+alias sdst='python setup.py sdist'
+alias sdsd='rm -rf dist; rm -rf *.egg-info'
+alias twnu='python -m twine upload dist/*'
+
 pntd () {
     path=${1:-test}
 
