@@ -4,7 +4,24 @@ alias ca='conda'
 
 # activate
 
-alias caa='conda activate'
+# alias caa='conda activate'
+
+caa () {
+    conda activate $1
+}
+
+if [ "$ZSH" ]; then
+    _caa () {
+        if [ -z "$_ENV_CACHE" ]; then
+            envs="$(conda env list | grep -v '^#' | cut -d ' ' -f 1 | head -n -1 | tr '\n' ' ')"
+            export _ENV_CACHE="$envs"
+        fi
+
+        eval "compadd $_ENV_CACHE"
+    }
+
+    compdef _caa caa
+fi
 
 # create
 

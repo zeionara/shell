@@ -15,7 +15,11 @@ src () {
 rsrc () {
     __conda_prefix=$CONDA_PREFIX
 
-    . ~/.bashrc
+    if [ -z "$ZSH" ]; then
+        . ~/.bashrc
+    else
+        . ~/.zshrc
+    fi
 
     if [ ! -z $__conda_prefix ]; then
         env_name=`basename $__conda_prefix`
