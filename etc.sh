@@ -20,3 +20,5 @@ color () {
 
     print -P "$code: %B%F{$code}Color%f"
 }
+
+alias home="cd $HOME"
