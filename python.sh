@@ -3,6 +3,11 @@
 alias pn='python'
 alias pp='pip'
 
+alias png0="CUDA_VISIBLE_DEVICES=-1 python"
+alias png1="CUDA_VISIBLE_DEVICES=0 python"
+alias png2="CUDA_VISIBLE_DEVICES=1 python"
+alias png3="CUDA_VISIBLE_DEVICES=2 python"
+
 alias pnt='python -m unittest'
 
 alias sdst='python setup.py sdist'
@@ -35,3 +40,7 @@ tfg () {
     # echo $TF_CPP_MIN_LOG_LEVEL
     _tfg
 }
+
+# pytorch
+
+alias ptg="python -c 'import torch; print(torch.cuda.is_available())'"
