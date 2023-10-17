@@ -52,8 +52,8 @@ cad () {
 # export
 
 cae () {
-    path=${1:-environment.yml}
-    conda env export | grep -v "^prefix: " > $path
+    _path=${1:-environment.yml}
+    conda env export | grep -v "^prefix: " > $_path
 }
 
 # fetch (update)
