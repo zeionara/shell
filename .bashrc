@@ -140,3 +140,5 @@ cpc () {
 . $BASH_TOOLS_ROOT/search.sh
 . $BASH_TOOLS_ROOT/etc.sh
 . $BASH_TOOLS_ROOT/hugging-face.sh
+
+. $BASH_TOOLS_ROOT/emerge.sh
