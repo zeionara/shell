@@ -142,3 +142,4 @@ cpc () {
 . $BASH_TOOLS_ROOT/hugging-face.sh
 
 . $BASH_TOOLS_ROOT/emerge.sh
+. $BASH_TOOLS_ROOT/suspend.sh
