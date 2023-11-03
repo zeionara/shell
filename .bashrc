@@ -1,8 +1,8 @@
 #!/bin/bash
 
-export GPG_TTY=$(tty)  # TODO: remove duplicate from bashrc project
+export GPG_TTY=$(tty)
 
-BASH_TOOLS_ROOT=$HOME/bash-tools
+BASH_TOOLS_ROOT=$HOME/shell
 
 raise () {
     : "${__raise:?$1}"

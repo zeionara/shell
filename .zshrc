@@ -196,6 +196,26 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 # source $HOME/colorful-prompt/colorful-prompt.sh
 
+try_source () {
+    filename=${2:-.bashrc}
+    script_path="$HOME/$1/$filename"
+
+    if test -f "$script_path"; then
+        . "$script_path"
+    fi
+}
+
+try_source colorful-prompt colorful-prompt.sh
+try_source kubetools
+try_source git-tools
+try_source shell # self-import
+
+try_source docker-tools aliases.sh
+try_source curl-tools
+try_source paste-token aliases.sh
+
+try_source smash .zshrc
+
 # function preexec() {
 #   echo 'foo'
 #   timer=$(($(date +%s%0N)/1000000))
