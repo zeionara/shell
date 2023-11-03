@@ -83,6 +83,10 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+if test "$(lsmod | grep pcspkr)"; then
+    sudo rmmod pcspkr
+fi
+
 # options
 
 unsetopt AUTO_REMOVE_SLASH # do not remove slash after directory name when typing word separator
