@@ -265,3 +265,5 @@ bindkey '^[[[CE' .accept-line
 
 setopt no_share_history
 unsetopt share_history
+
+alias chrome="google-chrome-stable --disable-features=DownloadBubble"

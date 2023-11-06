@@ -9,3 +9,5 @@ ege () {
 alias egl='qlist -IRv'
 alias egs='sudo emerge --sync'
 alias egw='sudo emerge -av @world'
+
+alias uga='sudo emerge --unmerge --ask'
