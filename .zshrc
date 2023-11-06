@@ -198,8 +198,6 @@ compdef _python_modules_ 'python'
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-# source $HOME/colorful-prompt/colorful-prompt.sh
-
 try_source () {
     filename=${2:-.bashrc}
     script_path="$HOME/$1/$filename"

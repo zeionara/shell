@@ -23,7 +23,7 @@ rsrc () {
 
     if [ ! -z $__conda_prefix ]; then
         env_name=`basename $__conda_prefix`
-        if [ "$env_name" != "anaconda3" ] && [ "$env_name" != "conda" ]; then
+        if [ "$env_name" != "anaconda3" ] && [ "$env_name" != "conda" ] && [ "$env_name" != "miniconda3" ]; then
             conda activate "$env_name"
         fi
     fi
