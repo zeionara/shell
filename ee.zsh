@@ -96,8 +96,8 @@ ee () {
     bindkey -M menuselect -r '^M'
 }
 
-echo "$_setup_ee_completions"
-echo "$_setup_ee_completions_no_prefix"
+# echo "$_setup_ee_completions"
+# echo "$_setup_ee_completions_no_prefix"
 
 compdef _echo_no_prefix ee '-parameter-'
 compdef _echo ee

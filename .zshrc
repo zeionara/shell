@@ -259,7 +259,10 @@ try_source smash .zshrc
 
 # bindkey -M menuselect '^[OP' .accept-line
 # bindkey -M menuselect '^[[[CE' .accept-line
-bindkey '^[[[CE' .accept-line
+
+# bindkey '^[[[CE' .accept-line
+bindkey '^[[[CE' accept-line
+bindkey -M menuselect '^M' .accept-line
 
 setopt no_share_history
 unsetopt share_history
