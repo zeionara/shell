@@ -9,6 +9,15 @@ _spec () {
   _wanted -V values expl "$description" compadd -P '$' "$@"
 }
 
+_spec_no_prefix () {
+  local description="$1"
+  shift  # Remove the first argument (description)
+
+  bindkey -M menuselect '^M' .accept-line
+
+  _wanted -V values expl "$description" compadd "$@"
+}
+
 # cat "$HOME/.zsh_history" | grep -E '^[^a-zA-Z]+echo\s+\$[A-Z_]+$' | cut -c 22- | cut -d ' ' -f 1 | sort | uniq -c | sort -nr | cut -d ' ' -f 8- | sed -E "s/(.*)/'\1'/" | tr '\n' ' '
 
 _get_ee_options () {
@@ -67,11 +76,19 @@ _setup_ee_completions=$(
   #   # sed 's/\$/\\$/g'
   # )
 )
-# echo "$foo"
+
+_setup_ee_completions_no_prefix=$(
+  echo _spec_no_prefix "history" $_ee_options
+)
+# echo "$_setup_ee_completions"
 # eval "$foo"
 
 _echo () {
   eval "$_setup_ee_completions"
+}
+
+_echo_no_prefix () {
+  eval "$_setup_ee_completions_no_prefix"
 }
 
 ee () {
@@ -79,4 +96,27 @@ ee () {
     bindkey -M menuselect -r '^M'
 }
 
+echo "$_setup_ee_completions"
+echo "$_setup_ee_completions_no_prefix"
+
+compdef _echo_no_prefix ee '-parameter-'
 compdef _echo ee
+
+# zstyle ':completion::complete:-parameter-::' parameter _echo
+# zstyle ':completion::complete:-parameter-::' parameter _echo
+# zstyle ':completion::complete-fuzzy:-parameter-::' parameter _echo
+# zstyle ':completion::complete:-parameter-::' completer _echo
+# zstyle ':completion::complete-fuzzy:-parameter-::' completer _echo
+# compdef _echo ee
+
+# zstyle ':completion:*:-parameter-:*' completer _echho
+# zstyle ':completion::complete:ee::' completer _echo
+# zstyle ':completion:*:*:ee:*' completer _echo
+# zstyle ':completion:*' completer _echo
+
+# zstyle ':completion:*:complete:ee:*:directories' sort reverse
+# zstyle ':completion:*:complete:ee:*:parameters' sort reverse
+# zstyle ':completion:*:complete:-parameter-:*:parameters' sort reverse
+# zstyle ':completion:*:complete:-parameter-:*:parameters' completer _echo
+
+# zstyle ':completion::complete-fuzzy:-parameter-::' completer _echo
