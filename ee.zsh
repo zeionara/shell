@@ -18,6 +18,17 @@ _spec_no_prefix () {
   _wanted -V values expl "$description" compadd "$@"
 }
 
+_spec_directories () {
+  local description="$1"
+  shift  # Remove the first argument (description)
+
+  bindkey -M menuselect '^M' .accept-line
+
+  # _wanted -V values expl "$description" compadd -J directory "$@"
+  compadd -V directories -x directories "$@"
+  compadd -V files -x files _files
+}
+
 # cat "$HOME/.zsh_history" | grep -E '^[^a-zA-Z]+echo\s+\$[A-Z_]+$' | cut -c 22- | cut -d ' ' -f 1 | sort | uniq -c | sort -nr | cut -d ' ' -f 8- | sed -E "s/(.*)/'\1'/" | tr '\n' ' '
 
 _get_ee_options () {
