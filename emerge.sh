@@ -1,6 +1,6 @@
 alias ega='sudo emerge --ask'
 
-alias egd='sudo emerge --depclean'
+alias egd='sudo emerge --depclean --ask'
 
 ege () {
 	sudo tail -f /var/log/emerge.log | awk -F ':  ' '{ printf "%s:  %s\n", strftime("%d-%m-%Y %H:%M:%S", $1), $2 }'
@@ -8,8 +8,9 @@ ege () {
 
 alias egl='qlist -IRv'
 
-alias ego="sudo emerge --oneshot"
-alias egop="sudo emerge --oneshot portage"
+alias egn='sudo emerge --noreplace'
+alias ego='sudo emerge --oneshot'
+alias egop='sudo emerge --oneshot portage'
 
 alias egs='sudo emerge --sync'
 alias egu='sudo emerge --ask --verbose --update --deep --newuse @world'

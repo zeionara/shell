@@ -270,4 +270,4 @@ unsetopt share_history
 alias chrome="google-chrome-stable --disable-features=DownloadBubble"
 
 try_source shell ee.zsh
-try_source shell ls.zsh
+# try_source shell ls.zsh
