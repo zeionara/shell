@@ -271,3 +271,5 @@ alias chrome="google-chrome-stable --disable-features=DownloadBubble"
 
 try_source shell ee.zsh
 # try_source shell ls.zsh
+
+unsetopt correct_all
