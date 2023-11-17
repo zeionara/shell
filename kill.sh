@@ -20,3 +20,11 @@ pl () {
     echo 'Search term must not be empty'
   fi
 }
+
+plh () {
+  pl "$1" | head -n 1 | cut -d ' ' -f 2
+}
+
+plt () {
+  pl "$1" | tail -n 1 | cut -d ' ' -f 2
+}
