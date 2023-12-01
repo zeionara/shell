@@ -208,6 +208,10 @@ try_source () {
     fi
 }
 
+if test -f "$HOME/bashrc/local.sh"; then
+  . "$HOME/bashrc/local.sh"
+fi
+
 try_source colorful-prompt colorful-prompt.sh
 try_source kubetools
 try_source git-tools
