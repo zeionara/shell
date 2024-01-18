@@ -23,4 +23,7 @@ color () {
 
 alias home="cd $HOME"
 
-alias pbd='python -m bull dull'
+pbd () {
+    cd "$HOME/bull"
+    python -m bull dull "$1" "$2"
+}
