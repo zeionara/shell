@@ -223,6 +223,8 @@ try_source paste-token aliases.sh
 
 try_source smash .zshrc
 
+try_source new main.sh
+
 # function preexec() {
 #   echo 'foo'
 #   timer=$(($(date +%s%0N)/1000000))
