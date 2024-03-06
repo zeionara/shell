@@ -57,7 +57,7 @@ _get_ee_options () {
   uniq -c -w1 |
   awk '{print $2, $1}' |
   sed -E 's#(([^ ]+).*)$#echo \1 $(tac "$HOME/.zsh_history" | grep -n "\2" | cut -d ":" -f 1 | head -n 1)#' |
-  zsh |
+  zsh 2>/dev/null |
   # awk '{first = $2 * 0.5; second = $3 * 0.2; sum = first + second; print $1, $2, first, $3, second, sum}'
   awk '{first = $2 / ENVIRON["__max_count"]; second = 1 - $3 / ENVIRON["__history_length"]; count_weight = 0.3; sum = count_weight * first + (1 - count_weight) * second; print sum, $1}' |
   sort -nr |
