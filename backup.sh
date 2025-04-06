@@ -61,8 +61,8 @@ camback () {
 
   __camback_counter=0
 
-  __camback /storage/418B-A230/DCIM/Camera $main_path/sdcard $counter
-  __camback /storage/self/primary/DCIM/Camera $main_path/root $counter
+  __camback /storage/418B-A230/DCIM/Camera $main_path/sdcard
+  __camback /storage/self/primary/DCIM/Camera $main_path/root
 
   if test $__camback_counter -eq 0; then
     echo Nothing to back up
