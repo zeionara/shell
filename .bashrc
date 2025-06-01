@@ -124,6 +124,7 @@ cpc () {
 . $BASH_TOOLS_ROOT/ssh.sh
 . $BASH_TOOLS_ROOT/gpg.sh
 . $BASH_TOOLS_ROOT/backup.sh
+. $BASH_TOOLS_ROOT/replicate.sh
 
 . $BASH_TOOLS_ROOT/conda.sh
 . $BASH_TOOLS_ROOT/python.sh
