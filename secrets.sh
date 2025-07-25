@@ -11,7 +11,7 @@ hide () {
     fi
 
     mv $src $dst
-    sed -E "s/ ([^ ]+)  # @hide$/ hidden/g" $dst > $src
+    sed -E "s/([A-Z_]+\s*=\s*['\"]*)[^ '\"]+(['\"]*)  # @hide$/\1hidden\2/g" $dst > $src
 }
 
 show () {
