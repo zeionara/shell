@@ -32,5 +32,43 @@ back () {
 
     printf -v current_index "%0${pad_size}d" $((max_previous_index + 1))
 
-    mv $filename $root$filename$backup_suffix.$current_index
+    cp $filename $root$filename$backup_suffix.$current_index
+}
+
+__camback_counter=0
+
+__camback () {
+  src=$1
+  dst=$2
+
+  for file in $(adb shell ls $src); do
+    if test ! -f $dst/$file; then
+      src_file=$src/$file
+
+      echo Backing up $src_file...
+      adb pull $src_file $dst/$file
+      __camback_counter=$((__camback_counter + 1))
+    fi
+  done
+}
+
+camback () {
+  parent_path=${1:-/home/$USER/Documents}
+  main_path=$parent_path/$(date '+%Y.%m.%d')
+
+  root_path=$main_path/root
+  sdcard_path=$main_path/sdcard
+
+  __camback_counter=0
+
+  __camback /storage/418B-A230/DCIM/Camera $main_path/sdcard
+  __camback /storage/self/primary/DCIM/Camera $main_path/root
+
+  if test $__camback_counter -eq 0; then
+    echo Nothing to back up
+  elif test $__camback_counter -eq 1; then
+    echo Backed up $__camback_counter file
+  else
+    echo Backed up $__camback_counter files
+  fi
 }
