@@ -146,6 +146,7 @@ cpc () {
 
 . $BASH_TOOLS_ROOT/github-cli.sh
 . $BASH_TOOLS_ROOT/kill.sh
+. $BASH_TOOLS_ROOT/secrets.sh
 
 . $BASH_TOOLS_ROOT/capture.sh
 . $BASH_TOOLS_ROOT/keychain.sh
