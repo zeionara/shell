@@ -23,3 +23,14 @@ phdga () {
 
   python -m aura prepare assets/data/$version/raw assets/data/$version/prepared assets/annotations/$version.docx
 }
+
+phdda () {
+  local version=$1
+
+  if test -z $version; then
+    echo 'Version is required'
+    return
+  fi
+
+  scp zeio@dark:/home/zeio/aura/assets/annotations/$version.docx $HOME/Documents/PhD
+}
