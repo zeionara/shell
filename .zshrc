@@ -74,7 +74,9 @@ HIST_STAMPS="%d-%m-%y %T"
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
 # plugins=(git zsh-autosuggestions fast-syntax-highlighting zsh-autocomplete)
+#
 plugins=(zsh-autosuggestions fast-syntax-highlighting zsh-autocomplete)
+#
 # plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 # plugins=(git zsh-autosuggestions)
 # plugins=(git zsh-syntax-highlighting zsh-autocomplete)
@@ -140,7 +142,131 @@ fi
 
 # Key bindings
 
+# SORTING ==================================
+
 bindkey "^I" menu-complete # continue path expansion to nested directories
+# zstyle ':completion:*' file-sort size
+
+# Match non-directories first, then directories
+# zstyle ':completion:*' file-patterns '^(*/):non-directories' '*(-/):directories'
+
+# Show non-directories first, then directories
+# zstyle ':completion:*' group-order non-directories directories
+
+# Match non-directories first, then directories
+# zstyle ':completion:*' file-patterns '*^(/):files' '*(-/):directories'
+
+# Show files first, then directories
+# zstyle ':completion:*' group-order files directories
+
+# zstyle ':completion:*' file-patterns '*(^/):files' '*(-/):directories'
+# zstyle ':completion:*' group-order directories files
+
+# Tell zsh to use 'files' and 'directories' as real tags
+# zstyle ':completion:*' tag-order 'directories:directories' 'files:non-directories'
+
+# Define what each tag contains
+# zstyle ':completion:*:files' file-patterns '*(^/)'
+# zstyle ':completion:*:directories' file-patterns '*(*/)'
+
+# zstyle ':completion:*' tag-order 'files:non-directories' 'directories:directories'
+# zstyle ':completion:*:files' file-patterns '*(^/)'
+# zstyle ':completion:*:directories' file-patterns '*(*/)'
+
+# Custom file completion: non-directories first, then directories
+# _force_files_then_dirs() {
+#   _alternative \
+#     'non-directories:file:(_files -g "*(^/)")' \
+#     'directories:directory:(_files -g "*(*/)")' \
+#     && ret=0
+# }
+# 
+# # Apply to all contexts that use _files
+# compdef _force_files_then_dirs _files _path_files path-files
+# 
+# zstyle ':completion:*' tag-order 'files:non-directories' 'directories:directories'
+# zstyle ':completion:*:files' file-patterns '*(^/)'
+# zstyle ':completion:*:directories' file-patterns '*(*/)'
+# zstyle ':completion:*' list-grouped true
+
+# Custom completion: files first, then directories
+# _complete_files_then_dirs() {
+#   setopt localoptions noautoparamkeys
+#   # First: non-directories
+#   _files -g '*(^/)' -Q && return 0
+#   # Then: directories
+#   _files -g '*(*/)' -Q && return 0
+# }
+# 
+# # Register the widget
+# zle -N complete-files-dirs _complete_files_then_dirs
+# 
+# # Make Tab use it
+# bindkey '^I' complete-files-dirs
+
+# Custom Tab: files first, then directories
+#
+# setopt extendedglob
+# _smart_complete() {
+#   local PREFIX=${LBUFFER##* }  # text before cursor
+#   local BASE="${PREFIX%/*}"    # directory part
+#   local PATTERN="${PREFIX##*/}" # filename part
+# 
+#   # If no pattern, match everything
+#   [[ -z "$PATTERN" ]] && PATTERN="*"
+# 
+#   # Set base directory
+#   if [[ -z "$BASE" || "$BASE" == "$PREFIX" ]]; then
+#     BASE="."
+#   fi
+# 
+#   # Normalize base
+#   [[ "$BASE" != "." ]] && BASE="${BASE%/}"
+# 
+#   # Full path prefix
+#   local FULLPATH="$BASE/$PATTERN"
+# 
+#   # Expand non-directories (files) and directories
+#   local FILES=()
+#   local DIRS=()
+# 
+#   # Enable glob qualifiers
+#   setopt localoptions extendedglob
+# 
+#   # Match files (not directories)
+#   if [[ -n "$(echo ${~FULLPATH}(^/N))" && "$(echo ${~FULLPATH}(^/N))" != *"*"* ]]; then
+#     FILES=(${~FULLPATH}(^/N))
+#   fi
+# 
+#   # Match directories
+#   if [[ -n "$(echo ${~FULLPATH}(/N))" && "$(echo ${~FULLPATH}(/N))" != *"*"* ]]; then
+#     DIRS=(${~FULLPATH}(/N))
+#   fi
+# 
+#   # Remove base path for display
+#   [[ "$BASE" == "." ]] || FILES=(${FILES[@]#"$BASE/"})
+#   [[ "$BASE" == "." ]] || DIRS=(${DIRS[@]#"$BASE/"})
+# 
+#   # Add trailing slash to directories
+#   DIRS=(${DIRS[@]/%//})
+# 
+#   # Combine: files first, then dirs
+#   local MATCHES=($FILES $DIRS)
+# 
+#   if (( ${#MATCHES} > 0 )); then
+#     compadd -Q -S '' -l -- $MATCHES
+#   else
+#     zle -M "no match"
+#   fi
+# }
+# 
+# zle -N _smart_complete
+# bindkey '^I' _smart_complete
+
+# SORTING ==================================
+
+# zstyle ':completion:*' group-order files directories
+# bindkey "^I" complete-word # continue path expansion to nested directories
 
 zle -N backward-delete-path-component # delete last path component on ctrl + W
 bindkey '^W' backward-delete-path-component
