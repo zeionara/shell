@@ -7,3 +7,7 @@ to_mp3 () {
 
     ffmpeg -i "$1" -acodec libmp3lame -ar $audio_rate "$converted_path"
 }
+
+louder () {
+  ffmpeg -i "$1" -filter:a "volume=$3" -qscale 0 $2
+}

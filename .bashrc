@@ -153,3 +153,4 @@ cpc () {
 . $BASH_TOOLS_ROOT/keychain.sh
 . $BASH_TOOLS_ROOT/history.sh
 . $BASH_TOOLS_ROOT/karma.sh
+. $BASH_TOOLS_ROOT/phd.sh

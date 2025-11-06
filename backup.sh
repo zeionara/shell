@@ -56,8 +56,13 @@ camback () {
   parent_path=${1:-/home/$USER/Documents}
   main_path=$parent_path/$(date '+%Y.%m.%d')
 
+  if test ! -d $main_path; then mkdir $main_path; fi
+
   root_path=$main_path/root
   sdcard_path=$main_path/sdcard
+
+  if test ! -d $root_path; then mkdir $root_path; fi
+  if test ! -d $sdcard_path; then mkdir $sdcard_path; fi
 
   __camback_counter=0
 
