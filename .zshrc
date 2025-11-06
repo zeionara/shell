@@ -224,6 +224,7 @@ try_source paste-token aliases.sh
 try_source smash .zshrc
 
 try_source new main.sh
+try_source cvesna
 
 # function preexec() {
 #   echo 'foo'
