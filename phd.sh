@@ -1,3 +1,5 @@
+#!/bin/bash
+
 phdta () {
   local version=$1
 
