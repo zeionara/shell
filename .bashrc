@@ -4,6 +4,8 @@ export GPG_TTY=$(tty)
 
 BASH_TOOLS_ROOT=$HOME/shell
 
+export PATH="${PATH}:/opt/flutter/bin"
+
 raise () {
     : "${__raise:?$1}"
 }
