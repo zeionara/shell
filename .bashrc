@@ -2,7 +2,7 @@
 
 export GPG_TTY=$(tty)
 
-BASH_TOOLS_ROOT=$HOME/shell
+BASH_TOOLS_ROOT=$ZSH_CUSTOM/shell
 
 export PATH="${PATH}:/opt/flutter/bin"
 
