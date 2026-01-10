@@ -102,5 +102,5 @@ alias caus='conda update -n base -c defaults conda'
 
 alias caz='conda --version'
 
-alias va='source .venv/bin/activate'
+alias va='source /mnt/cache/venv/$(pwd | xargs basename)/bin/activate'
 alias vd='deactivate'
