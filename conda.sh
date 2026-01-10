@@ -102,5 +102,10 @@ alias caus='conda update -n base -c defaults conda'
 
 alias caz='conda --version'
 
-alias va='source /mnt/cache/venv/$(pwd | xargs basename)/bin/activate'
+va () {
+  _env_name=$(pwd | xargs basename)
+  source /mnt/cache/venv/$_env_name/bin/activate
+  export PATH="$PATH:/mnt/cache/venv/$_env_name/bin"
+}
+
 alias vd='deactivate'
