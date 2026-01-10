@@ -157,3 +157,4 @@ cpc () {
 . $BASH_TOOLS_ROOT/karma.sh
 . $BASH_TOOLS_ROOT/phd.sh
 . $BASH_TOOLS_ROOT/milvus.sh
+. $BASH_TOOLS_ROOT/vpn.sh
