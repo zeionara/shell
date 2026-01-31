@@ -27,3 +27,5 @@ pbd () {
     cd "$HOME/bull"
     python -m bull dull "$1" "$2"
 }
+
+alias battery="cat /sys/class/power_supply/BAT*/capacity"
