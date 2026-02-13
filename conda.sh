@@ -108,4 +108,8 @@ va () {
   export PATH="$PATH:/mnt/cache/venv/$_env_name/bin"
 }
 
+val () {
+  source .venv/bin/activate
+}
+
 alias vd='deactivate'
