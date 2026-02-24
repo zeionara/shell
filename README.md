@@ -19,3 +19,11 @@ To apply changes to your current terminal session, execute the following command
 ```sh
 . ~/.zshrc
 ```
+
+## Fix for MacOS
+
+If `MacOS` behaves weirdly over `ssh` connection, the problem might be in the unknown terminal. For enabling `alacritty` support run:
+
+```sh
+tic -x <(curl -fsSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info)
+```
